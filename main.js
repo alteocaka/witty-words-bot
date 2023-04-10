@@ -1,8 +1,8 @@
 import client from "./client.js";
 import fetch from "node-fetch";
 import { CronJob } from "cron";
-// "0 */6 * * *"
-var job = new CronJob("20 * * * * *", function () {
+
+var job = new CronJob("0 */6 * * *", function () {
   fetch("https://api.quotable.io/random")
     .then((response) => {
       if (!response.ok) {
@@ -12,6 +12,7 @@ var job = new CronJob("20 * * * * *", function () {
     })
     .then((data) => {
       tweet(data);
+      console.log('New tweet!')
     })
     .catch((error) => {
       console.error("There was a problem with the fetch operation:", error);
