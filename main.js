@@ -1,8 +1,8 @@
 import client from "./client.js";
 import fetch from "node-fetch";
 import { CronJob } from "cron";
-
-var job = new CronJob("0 */6 * * *", function () {
+// "0 */6 * * *"
+var job = new CronJob("20 * * * * *", function () {
   fetch("https://api.quotable.io/random")
     .then((response) => {
       if (!response.ok) {
