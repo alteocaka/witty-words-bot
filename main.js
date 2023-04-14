@@ -1,6 +1,10 @@
 import client from "./client.js";
 import fetch from "node-fetch";
+import http from 'http';
 import { CronJob } from "cron";
+
+// const hostname = '127.0.0.1';
+const port = process.env.PORT || 3000;
 
 var job = new CronJob("0 */6 * * *", function () {
   fetch("https://api.quotable.io/random")
@@ -29,4 +33,13 @@ const tweet = async (data) => {
   }
 };
 
-job.start();
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World');
+});
+
+server.listen(port, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+  job.start();
+});
