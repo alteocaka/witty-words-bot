@@ -10,7 +10,6 @@
   "author": "Alteo Caka",
   "license": "ISC",
   "dependencies": {
-    "cron": "^2.3.0",
     "node-fetch": "^3.3.1",
     "twitter-api-v2": "^1.14.2"
   },
