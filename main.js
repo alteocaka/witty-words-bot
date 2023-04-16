@@ -14,7 +14,7 @@ const tweet = async (data) => {
   }
 };
 
-fetch("https://api.quotable.io/random")
+const fire = () => fetch("https://api.quotable.io/random")
   .then((response) => {
     if (!response.ok) {
       throw new Error("Network response was not ok");
@@ -38,3 +38,5 @@ const server = http.createServer((req, res) => {
 server.listen(port, () => {
   console.log(`Server running!`);
 });
+
+fire();
